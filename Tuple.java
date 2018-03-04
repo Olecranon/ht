@@ -4,10 +4,13 @@
 public class Tuple {
 	private int k;
 	private String v;
+	private int freq;
+	
 	
 	public Tuple(int keyP, String valueP){
 		k = keyP;
 		v = valueP;
+		freq = 1;
 	}
 	
 	public int getKey(){
@@ -19,7 +22,19 @@ public class Tuple {
 	}
 	
 	public boolean equals(Tuple t){
-		return (t.k == this.k) && (t.v == this.v);
+		return (t.getKey() == this.k) && (t.getValue().equals(this.v));
+	}
+	
+	public void addFrequency(){
+		freq++;
+	}
+
+	public void decreaseFrequency(){
+		freq--;
+	}
+	
+	public int getFrequency(){
+		return freq;
 	}
 	
 	// reference next
