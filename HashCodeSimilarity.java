@@ -7,6 +7,7 @@ public class HashCodeSimilarity {
 	// in the hashcode, we only care the hash of the substring,
 	// so just assign all the substring the same value DUMMY
 	private final String DUMMY = "";
+	private final int INIT_HT_SIZE = 3506511; //100, 3506511
 	
 	private String S;
 	private String T;
@@ -19,7 +20,6 @@ public class HashCodeSimilarity {
 	private ArrayList<Tuple> rollingTuple_T;
 	
 	
-	
 	HashCodeSimilarity(String s1, String s2, int sLength){
 		S = s1;
 		T = s2;
@@ -30,8 +30,8 @@ public class HashCodeSimilarity {
 		rollingTuple_T = getRollOverHashing(s2, sLength);
 		
 		// size must be larger, otherwise, there's bug
-		htS = new HashTable(3506511); // 43506511
-		htT = new HashTable(3506511);
+		htS = new HashTable(INIT_HT_SIZE);
+		htT = new HashTable(INIT_HT_SIZE);
 		
 		for(Tuple t: rollingTuple_S){
 			htS.add(t);
@@ -64,13 +64,15 @@ public class HashCodeSimilarity {
 			if(!processedHashCode.contains(t.getKey())){
 				processedHashCode.add(t.getKey());
 				
-				ArrayList<Tuple> searchResultList = ht.search(t.getKey());
+//				ArrayList<Tuple> searchResultList = ht.search(t.getKey());
+//				
+//				int f_s_i = 0;
+//				for (Tuple searchResultT: searchResultList) {
+//					f_s_i = f_s_i + searchResultT.getFrequency();
+//				}
 				
-				int f_s_i = 0;
-				for (Tuple searchResultT: searchResultList) {
-					f_s_i = f_s_i + searchResultT.getFrequency();
-				}
-
+				int f_s_i = ht.search(new Tuple(t.getKey(), DUMMY));
+				
 				VectorLength = VectorLength + f_s_i * f_s_i;
 			}
 		}
@@ -93,22 +95,25 @@ public class HashCodeSimilarity {
 			if(!processedHashCode.contains(t.getKey())){
 				processedHashCode.add(t.getKey());
 	
-				ArrayList<Tuple> searchResultListS = htS.search(t.getKey());
-				ArrayList<Tuple> searchResultListT = htT.search(t.getKey());
+//				ArrayList<Tuple> searchResultListS = htS.search(t.getKey());
+//				ArrayList<Tuple> searchResultListT = htT.search(t.getKey());
+//				
+//				int s_i = 0;
+//				for (Tuple ts_i: searchResultListS) {
+//					s_i = s_i + ts_i.getFrequency();
+//				}
+//				
+//				int t_i = 0;
+//				for (Tuple tt_i: searchResultListT) {
+//					t_i = t_i + tt_i.getFrequency();
+//				}
+//				
+//				num = num + s_i * t_i;
 				
-				int s_i = 0;
-				for (Tuple ts_i: searchResultListS) {
-					s_i = s_i + ts_i.getFrequency();
-				}
-				
-				int t_i = 0;
-				for (Tuple tt_i: searchResultListT) {
-					t_i = t_i + tt_i.getFrequency();
-				}
-				
+				int s_i = htS.search(new Tuple(t.getKey(), DUMMY));
+				int t_i = htT.search(new Tuple(t.getKey(), DUMMY));
 				num = num + s_i * t_i;
 				
-//				num = num + searchResultListS.size()*searchResultListT.size();
 			}	
 		}			
 		return num;

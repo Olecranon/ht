@@ -33,6 +33,11 @@ public class testing {
 //			System.out.println("------------------");
 //		}
 		
+		
+		HashFunction hf = new HashFunction(3506511);
+		System.out.println(hf.hash(3506511));
+		System.out.println("------");
+		
 		String s0 = "enterkin";
 		System.out.println(s0.hashCode());
 		

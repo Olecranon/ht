@@ -9,13 +9,13 @@ public class report {
 		String shak1Path = "./shak1";
 		String shak2Path = "./shak2";
 		
-//		String s1 = new Scanner(new File(shak1Path)).useDelimiter("\\Z").next().replaceAll("[^A-Za-z0-9]", "").toLowerCase();
-//		String s2 = new Scanner(new File(shak2Path)).useDelimiter("\\Z").next().replaceAll("[^A-Za-z0-9]", "").toLowerCase();
-//		int k = 8;
+		String s1 = new Scanner(new File(shak1Path)).useDelimiter("\\Z").next().replaceAll("[^A-Za-z0-9]", "").toLowerCase();
+		String s2 = new Scanner(new File(shak2Path)).useDelimiter("\\Z").next().replaceAll("[^A-Za-z0-9]", "").toLowerCase();
+		int k = 8;
 		
-		String s1 = "aroseisaroseisarose"; //aroseisaroseisarose 1268264612
-		String s2 = "aroseisaflowerwhichisarose"; //aroseisaflowerwhichisarose 251188438
-		int k = 4;
+//		String s1 = "aroseisaroseisarose"; //aroseisaroseisarose 1268264612
+//		String s2 = "aroseisaflowerwhichisarose"; //aroseisaflowerwhichisarose 251188438
+//		int k = 4;
 		
 //		System.out.println(s1);
 //		System.out.println(s2.length());
@@ -31,8 +31,8 @@ public class report {
 		System.out.println(hcs.lengthOfS1() * hcs.lengthOfS1());
 		System.out.println(hcs.lengthOfS2() * hcs.lengthOfS2());
 		System.out.println(hcs.similarity());
-		
-		
+//		
+//		
 //		System.out.println("------");
 //		BruteForceSimilarity bfs = new BruteForceSimilarity(s1, s2, k);
 //		System.out.println(bfs.lengthOfS1() * bfs.lengthOfS1());

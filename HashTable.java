@@ -53,8 +53,6 @@ public class HashTable {
 	}
 	
 	
-	
-	
 	public float averageLoad(){
 		
 		int number_of_unempty_Ht_Bins = 0;
@@ -67,9 +65,7 @@ public class HashTable {
 		
 		return (float) (numElements * 1.0 / number_of_unempty_Ht_Bins);
 	}
-	
-	
-	
+		
 	public int size() {return currentSize;};
 	
 	public int numElements() {return numElements;}
@@ -84,7 +80,6 @@ public class HashTable {
 	public void add(Tuple t) {
 		
 		numElementsWithDuplication++;
-//		System.out.println(numElementsWithDuplication);
 		// places t in the list pointed by the cell hash(t:getKey())
 		int htIndex = hf.hash(t.getKey());
 		
@@ -147,7 +142,8 @@ public class HashTable {
 				Tuple tempTuple = ht[i];
 
 				while(tempTuple != null){
-					Tuple addedTuple = tempTuple;
+//					Tuple addedTuple = tempTuple;
+					Tuple addedTuple = new Tuple(tempTuple.getKey(), tempTuple.getValue());
 					
 					// need to reset the next pointer
 					addedTuple.next = null;
@@ -205,7 +201,7 @@ public class HashTable {
 		
 		while(head != null) {
 			if(head.equals(t)) {
-				num = num + head.getFrequency();				
+				num = num + head.getFrequency();	//break;			
 			}
 			head = head.next;
 		}

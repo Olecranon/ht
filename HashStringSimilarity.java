@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class HashStringSimilarity {
 
 	private final int ALPHA = 31;
+	private final int INIT_HT_SIZE = 3506511; //100, 3506511
 	
 	private String S;
 	private String T;
@@ -23,8 +24,8 @@ public class HashStringSimilarity {
 		rollingTuple_T = getRollOverHashing(s2, sLength);
 		
 		// size must be larger, otherwise, there's bug
-		htS = new HashTable(3506511); //43506511
-		htT = new HashTable(3506511); //43506511
+		htS = new HashTable(INIT_HT_SIZE); //43506511
+		htT = new HashTable(INIT_HT_SIZE); //43506511
 		
 		for(Tuple t: rollingTuple_S){
 			htS.add(t);
